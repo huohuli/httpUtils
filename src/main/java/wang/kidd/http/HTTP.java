@@ -14,65 +14,65 @@ import org.apache.http.protocol.HttpContext;
 import java.io.IOException;
 
 /**
- * @author apple
+ * @author kidd
  */
 public class HTTP {
-	private CloseableHttpClient client;
+    private CloseableHttpClient client;
 
-	public HTTP(HTTPConfig config) {
-		RequestConfig reqConfig = RequestConfig.custom()
-				.setSocketTimeout(config.getSocketTimeout())
-				.setConnectTimeout(config.getConnectTimeout()).build();
-		client = HttpClients.custom().setDefaultRequestConfig(reqConfig)
-				.setConnectionManager(config.getConnectionManager())
-				.setRetryHandler(config.getRetryHandler()).build();
-	}
+    public HTTP(HTTPConfig config) {
+        RequestConfig reqConfig = RequestConfig.custom()
+                .setSocketTimeout(config.getSocketTimeout())
+                .setConnectTimeout(config.getConnectTimeout()).build();
+        client = HttpClients.custom().setDefaultRequestConfig(reqConfig)
+                .setConnectionManager(config.getConnectionManager())
+                .setRetryHandler(config.getRetryHandler()).build();
+    }
 
-	public HttpResponse execute(HttpHost host, HttpRequest request,
+    public HttpResponse execute(HttpHost host, HttpRequest request,
                                 HttpContext context) throws IOException, ClientProtocolException {
-		return client.execute(host, request, context);
-	}
+        return client.execute(host, request, context);
+    }
 
-	public <T> T execute(HttpHost host, HttpRequest request,
+    public <T> T execute(HttpHost host, HttpRequest request,
                          ResponseHandler<? extends T> handler, HttpContext context)
-			throws IOException, ClientProtocolException {
-		return client.execute(host, request, handler, context);
-	}
+            throws IOException, ClientProtocolException {
+        return client.execute(host, request, handler, context);
+    }
 
-	public <T> T execute(HttpHost host, HttpRequest request,
+    public <T> T execute(HttpHost host, HttpRequest request,
                          ResponseHandler<? extends T> handler) throws IOException,
             ClientProtocolException {
-		return client.execute(host, request, handler);
-	}
+        return client.execute(host, request, handler);
+    }
 
-	public HttpResponse execute(HttpHost host, HttpRequest request)
-			throws IOException, ClientProtocolException {
-		return client.execute(host, request);
-	}
+    public HttpResponse execute(HttpHost host, HttpRequest request)
+            throws IOException, ClientProtocolException {
+        return client.execute(host, request);
+    }
 
-	public HttpResponse execute(HttpUriRequest request, HttpContext context)
-			throws IOException, ClientProtocolException {
-		return client.execute(request, context);
-	}
+    public HttpResponse execute(HttpUriRequest request, HttpContext context)
+            throws IOException, ClientProtocolException {
+        return client.execute(request, context);
+    }
 
-	public <T> T execute(HttpUriRequest request,
+    public <T> T execute(HttpUriRequest request,
                          ResponseHandler<? extends T> handler, HttpContext context)
-			throws IOException, ClientProtocolException {
-		return client.execute(request, handler, context);
-	}
+            throws IOException, ClientProtocolException {
+        return client.execute(request, handler, context);
+    }
 
-	public <T> T execute(HttpUriRequest request,
-			ResponseHandler<? extends T> handler) throws IOException,
+    public <T> T execute(HttpUriRequest request,
+                         ResponseHandler<? extends T> handler) throws IOException,
             ClientProtocolException {
-		return client.execute(request, handler);
-	}
+        return client.execute(request, handler);
+    }
 
-	public HttpResponse execute(HttpUriRequest request) throws IOException,
+    public HttpResponse execute(HttpUriRequest request) throws IOException,
             ClientProtocolException {
-		return client.execute(request);
-	}
+        return client.execute(request);
+    }
 
-	public void close() throws IOException {
-		client.close();
-	}
+    public void close() throws IOException {
+        client.close();
+    }
 }

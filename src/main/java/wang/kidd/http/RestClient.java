@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 /**
- * @author apple
+ * @author kidd
  */
 public class RestClient {
     static Logger logger = Logger.getLogger(RestClient.class);

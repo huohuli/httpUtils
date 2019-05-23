@@ -1,14 +1,19 @@
 package wang.kidd.http;
 
+import lombok.Data;
+
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 /**
- * @author apple
+ * @author kidd
  */
-public class Response {
+@Data
+public class Response implements Serializable {
 
-    private int code;
+    private static final long serialVersionUID = 7299767941867123952L;
+    private Integer code;
 
     private byte[] body;
 
